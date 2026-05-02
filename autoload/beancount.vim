@@ -252,7 +252,7 @@ endfunction
 
 " Call bean-doctor on the current line and dump output into a scratch buffer
 function! beancount#get_context() abort
-    let l:context = system('bean-doctor context ' . expand('%') . ' ' . line('.'))
+    let l:context = system('bean-doctor context ' . shellescape(expand('%')) . ' ' . line('.'))
     botright new
     setlocal buftype=nofile bufhidden=hide noswapfile
     call append(0, split(l:context, '\v\n'))
